@@ -33,7 +33,7 @@ print(num_detection_model, "---------------------------")
 
 
 with open(
-    r"C:\Users\HP\Desktop\cawis\project_cawis\savedModels\prediction_list.json"
+    "./savedModels/prediction_list.json"
 ) as file:
     data = json.load(file)
     pred_cols = data["pred_list"]
