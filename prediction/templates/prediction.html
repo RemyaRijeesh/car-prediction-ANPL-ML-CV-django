@@ -1,0 +1,259 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAWIS - Get the Best Price of Your Car</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="flex flex-col md:flex-row md:justify-between p-6">
+        <h1 class="text-4xl font-bold text-gray-800">CAWIS</h1>
+        <div class="flex space-x-5 mt-6 md:mt-0">
+            <a href={% url "prediction" %} class="text-gray-800 hover:text-gray-500">home</a>
+
+            <a href={% url "number_detection" %} class="text-gray-800 hover:text-gray-500">Number Detection</a>
+            <a href={% url "review" %} class="text-gray-800 hover:text-gray-500">Review</a>
+            {% comment %} <a href="#" class="text-gray-800 hover:text-gray-500">Contact Us</a> {% endcomment %}
+        </div>
+    </div>
+
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/2 h-96 md:h-auto bg-cover bg-center" style="background-image: url('./static/images/Price-pana.png');"></div>
+            <div class="md:w-1/2 p-8">
+                <div class="">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-3">Get the Best Price of Your Car</h2>
+                        <div class="border-t-4 border-gray-500 w-16"></div>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="Company_name" class="block mb-2 text-gray-800">Company name</label>
+                            
+                            <select id="Company_name" name="Company_name" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
+                                <option value="Toyota">Toyota</option>
+                                <option value="Suzuki">Suzuki</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Mitsubishi">Mitsubishi</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Daihatsu">Daihatsu</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Mercedes">Mercedes</option>
+                                <option value="Hyundai">Hyundai</option>
+                                <option value="Daewoo">Daewoo</option>
+                                <option value="BMW">BMW</option>
+                                <option value="FAW">FAW</option>
+                                <option value="Range">Range</option>
+                                <option value="DFSK">DFSK</option>
+                                <option value="KIA">KIA</option>
+                                <option value="Lexus">Lexus</option>
+                                <option value="United">United</option>
+                                <option value="SsangYong">SsangYong</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="Subaru">Subaru</option>
+                                <option value="Porsche">Porsche</option>
+                                <option value="Chery">Chery</option>
+                                <option value="Fiat">Fiat</option>
+                                <option value="Land">Land</option>
+                                <option value="MINI">MINI</option>
+                                <option value="Hummer">Hummer</option>
+                                <option value="Jeep">Jeep</option>
+                                <option value="Jaguar">Jaguar</option>
+                                <option value="Adam">Adam</option>
+                                <option value="Volvo">Volvo</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="Model" class="block mb-2 text-gray-800">Model</label>
+                            <select id="Model" name="Model" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
+                                <option value="Vitz">Vitz</option>
+                                <option value="Corolla">Corolla</option>
+                                <option value="Alto">Alto</option>
+                                <option value="Civic">Civic</option>
+                                <option value="Wagon">Wagon</option>
+                                <option value="Mirage">Mirage</option>
+                                <option value="Prado">Prado</option>
+                                <option value="Vezel">Vezel</option>
+                                <option value="City">City</option>
+                                <option value="Cultus">Cultus</option>
+                                <option value="Fortuner">Fortuner</option>
+                                <option value="Mehran">Mehran</option>
+                                <option value="Khyber">Khyber</option>
+                                <option value="Dayz">Dayz</option>
+                                <option value="Mira">Mira</option>
+                                <option value="Prius">Prius</option>
+                                <option value="Juke">Juke</option>
+                                <option value="Passo">Passo</option>
+                                <option value="Bolan">Bolan</option>
+                                <option value="Swift">Swift</option>
+                                <option value="Liana">Liana</option>
+                                <option value="Margalla">Margalla</option>
+                                <option value="Belta">Belta</option>
+                                <option value="Camry">Camry</option>
+                                <option value="A4">A4</option>
+                                <option value="Noah">Noah</option>
+                                <option value="Hijet">Hijet</option>
+                                <option value="Land">Land</option>
+                                <option value="Aqua">Aqua</option>
+                                <option value="Fit">Fit</option>
+                                <option value="Accord">Accord</option>
+                                <option value="Joy">Joy</option>
+                                <option value="Cast">Cast</option>
+                                <option value="Probox">Probox</option>
+                                <option value="Move">Move</option>
+                                <option value="Lancer">Lancer</option>
+                                <option value="Benz">Benz</option>
+                                <option value="Voxy">Voxy</option>
+                                <option value="Mark">Mark</option>
+                                <option value="Cuore">Cuore</option>
+                                <option value="Platz">Platz</option>
+                                <option value="Baleno">Baleno</option>
+                                <option value="Premio">Premio</option>
+                                <option value="Terios">Terios</option>
+                                <option value="Surf">Surf</option>
+                                <option value="Crown">Crown</option>
+                                <option value="Santro">Santro</option>
+                                <option value="Boon">Boon</option>
+                                <option value="Racer">Racer</option>
+                                <option value="Tanto">Tanto</option>
+                                <option value="Esse">Esse</option>
+                                <option value="Aygo">Aygo</option>
+                                <option value="Grace">Grace</option>
+                                <option value="Kizashi">Kizashi</option>
+                                <option value="Clipper">Clipper</option>
+                                <option value="Ciaz">Ciaz</option>
+                                <option value="X-PV">X-PV</option>
+                                <option value="Moco">Moco</option>
+                                <option value="Allion">Allion</option>
+                                <option value="Vamos">Vamos</option>
+                                <option value="Pixis">Pixis</option>
+                                <option value="Bego">Bego</option>
+                                <option value="Sunny">Sunny</option>
+                                <option value="Porte">Porte</option>
+                                <option value="ISIS">ISIS</option>
+                                <option value="Rover">Rover</option>
+                                <option value="Hustler">Hustler</option>
+                                <option value="Glory">Glory</option>
+                                <option value="Life">Life</option>
+                                <option value="Rush">Rush</option>
+                                <option value="Jimny">Jimny</option>
+                                <option value="Otti">Otti</option>
+                                <option value="Sportage">Sportage</option>
+                                <option value="Excel">Excel</option>
+                                <option value="RX">RX</option>
+                                <option value="Bravo">Bravo</option>
+                                <option value="Kei">Kei</option>
+                                <option value="Sienta">Sienta</option>
+                                <option value="Cross">Cross</option>
+                                <option value="Corona">Corona</option>
+                                <option value="Note">Note</option>
+                                <option value="Hilux">Hilux</option>
+                                <option value="Spectra">Spectra</option>
+                                <option value="Pajero">Pajero</option>
+                                <option value="Tiida">Tiida</option>
+                                <option value="Freed">Freed</option>
+                                <option value="March">March</option>
+                                <option value="CT200h">CT200h</option>
+                                <option value="Insight">Insight</option>
+                                <option value="Picanto">Picanto</option>
+                                <option value="Celerio">Celerio</option>
+                                <option value="Bluebird">Bluebird</option>
+                                <option value="Potohar">Potohar</option>
+                                <option value="Stavic">Stavic</option>
+                                <option value="Vitara">Vitara</option>
+                                <option value="Estima">Estima</option>
+                                <option value="Galant">Galant</option>
+                                <option value="Flair">Flair</option>
+                                <option value="Roox">Roox</option>
+                                <option value="Stella">Stella</option>
+                                <option value="Carol">Carol</option>
+                                <option value="Rav4">Rav4</option>
+                                <option value="Hiace">Hiace</option>
+                                <option value="Stream">Stream</option>
+                                <option value="Cayenne">Cayenne</option>
+                                <option value="Caldina">Caldina</option>
+                                <option value="Pleo">Pleo</option>
+                                <option value="Azwagon">Azwagon</option>
+                                <option value="Starlet">Starlet</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="Age_of_the_car" class="block mb-2 text-gray-800">Age of the car</label>
+                            <input type="text" id="Age_of_the_car" name="Age_of_the_car" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="Kilometer_driven" class="block mb-2 text-gray-800">Kilometer driven</label>
+                            <input type="text" id="Kilometer_driven" name="Kilometer_driven" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
+                        </div>
+
+                        
+
+                        <div class="mb-4">
+                            <label for="Engine_type" class="block mb-2 text-gray-800">Engine type</label>
+                            <select id="Engine_type" name="Engine_type" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
+                                <option value="Petrol" selected>Petrol</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="Hybrid">Hybrid</option>
+                                
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="Body_type" class="block mb-2 text-gray-800">Body type</label>
+                            <select id="Body_type" name="Body_type" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
+                                <option value="Hatchback" selected>Hatchback</option>
+                                <option value="Sedan">Sedan</option>
+                                <option value="SUV">SUV</option>
+                                
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="Transmission_type" class="block mb-2 text-gray-800">Transmission type</label>
+                            <select id="Transmission_type" name="Transmission_type" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
+                                <option value="Automatic" selected>Automatic</option>
+                                <option value="Manual">Manual</option>
+                                
+                                
+                            </select>
+                        </div>
+
+                        
+                       
+                       
+                      
+                        
+                        
+                       
+
+                       
+                        <button type="submit" class="w-full p-2 bg-black hover:bg-gray-900 text-white font-bold rounded-md">Submit</button>
+                    </form>
+
+                    {% if predicted_price %}
+    <div class="h-10 bg-green-200">
+        <p>Predicted Price: {{ predicted_price }}</p>
+    </div>
+{% endif %}
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
