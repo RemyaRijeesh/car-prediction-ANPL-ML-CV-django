@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ReviewAnalysis
+from .models import ReviewAnalysis,CarDetails
 
 
 
@@ -7,3 +7,5 @@ from .models import ReviewAnalysis
 class ReviewAnalysisAdmin(admin.ModelAdmin):
     list_display = ('review', 'sentiment') 
     search_fields = ['sentiment']
+    
+admin.site.register(CarDetails)    

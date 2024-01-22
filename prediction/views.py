@@ -12,7 +12,7 @@ import cv2
 import tensorflow as tf
 from keras_preprocessing.image import load_img, img_to_array
 import pytesseract as pt
-from .models import ReviewAnalysis
+from .models import ReviewAnalysis,CarDetails
 
 import google.generativeai as genai
 
@@ -37,6 +37,11 @@ with open(
 ) as file:
     data = json.load(file)
     pred_cols = data["pred_list"]
+
+
+
+def home(request):
+    return render(request, 'home.html')
 
 
 def predict_price(request):
@@ -125,12 +130,29 @@ def number_detection(request):
 
         # extract text from image
         text = pt.image_to_string(roi)
-        print(text, "----text-->")
+        print(text,"----text-->", len(text),'===len')
+        
+        for i, j in enumerate(text):
+            print('index = ',i, str(j), type(str(text)))
+            
+        text = str(text[:len(text)-2])
+        
+        
+        
+        car_details = CarDetails.objects.filter(car_number=text).first()  
+        
+        print(car_details,'fhfjfjf') 
+        
+        if not text:
+            message = "Sorry, cannot detect number."
+            context = {"uploaded_file_url": uploaded_file_url, "number": text, "car_details": car_details, "message": message}
+        else:
+            context = {"uploaded_file_url": uploaded_file_url, "number": text, "car_details": car_details}
 
-        context = {"uploaded_file_url": uploaded_file_url, "number": text}
+        
 
-        return render(request, "number_detection.html", context)
-    return render(request, "number_detection.html")
+        return render(request, "prediction.html", context)
+    return render(request, "prediction.html")
 
 
 def sentimental_analysis(request):

@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAWIS - Get the Best Price of Your Car</title>
+    <title>CAR SOUL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
@@ -12,28 +12,41 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-white text-gray-800">
     <div class="flex flex-col md:flex-row md:justify-between p-6">
-        <h1 class="text-4xl font-bold text-gray-800">CAWIS</h1>
+        <h1 class="text-4xl font-bold text-gray-800">CAR SOUL</h1>
         <div class="flex space-x-5 mt-6 md:mt-0">
-            <a href={% url "prediction" %} class="text-gray-800 hover:text-gray-500">home</a>
-
-            <a href={% url "number_detection" %} class="text-gray-800 hover:text-gray-500">Number Detection</a>
-            <a href={% url "review" %} class="text-gray-800 hover:text-gray-500">Review</a>
+            <a href={% url "home" %} class="text-gray-800 hover:text-gray-500">home</a>
+            <a href={% url "prediction" %} class="text-gray-800 hover:text-gray-500">Prediction machine</a>
+            <a href={% url "review" %} class="text-gray-800 hover:text-gray-500">Review Analysis</a>
             {% comment %} <a href="#" class="text-gray-800 hover:text-gray-500">Contact Us</a> {% endcomment %}
         </div>
     </div>
 
-    <div class="container mx-auto">
+    <div class="container h-screen mx-auto">
         <div class="flex flex-col md:flex-row">
-            <div class="md:w-1/2 h-96 md:h-auto bg-cover bg-center" style="background-image: url('./static/images/Price-pana.png');"></div>
-            <div class="md:w-1/2 p-8">
-                <div class="">
+            
+            <div class="w-full md:w-1/2 h-screen">
+
+
+
+
+
+                <div class="p-10">
+
                     <div class="mb-8">
                         <h2 class="text-3xl font-bold text-gray-800 mb-3">Get the Best Price of Your Car</h2>
                         <div class="border-t-4 border-gray-500 w-16"></div>
                     </div>
-                    <form method="POST">
+    
+    
+    
+    
+    
+    
+    
+                    <form method="POST" action="{% url 'prediction'%}">
+                        
                         {% csrf_token %}
                         <div class="mb-4">
                             <label for="Company_name" class="block mb-2 text-gray-800">Company name</label>
@@ -72,7 +85,7 @@
                                 <option value="Volvo">Volvo</option>
                             </select>
                         </div>
-
+    
                         <div class="mb-4">
                             <label for="Model" class="block mb-2 text-gray-800">Model</label>
                             <select id="Model" name="Model" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
@@ -187,19 +200,19 @@
                                 <option value="Starlet">Starlet</option>
                             </select>
                         </div>
-
+    
                         <div class="mb-4">
                             <label for="Age_of_the_car" class="block mb-2 text-gray-800">Age of the car</label>
                             <input type="text" id="Age_of_the_car" name="Age_of_the_car" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
                         </div>
-
+    
                         <div class="mb-4">
                             <label for="Kilometer_driven" class="block mb-2 text-gray-800">Kilometer driven</label>
                             <input type="text" id="Kilometer_driven" name="Kilometer_driven" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
                         </div>
-
+    
                         
-
+    
                         <div class="mb-4">
                             <label for="Engine_type" class="block mb-2 text-gray-800">Engine type</label>
                             <select id="Engine_type" name="Engine_type" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
@@ -209,7 +222,7 @@
                                 
                             </select>
                         </div>
-
+    
                         <div class="mb-4">
                             <label for="Body_type" class="block mb-2 text-gray-800">Body type</label>
                             <select id="Body_type" name="Body_type" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
@@ -219,7 +232,7 @@
                                 
                             </select>
                         </div>
-
+    
                         <div class="mb-4">
                             <label for="Transmission_type" class="block mb-2 text-gray-800">Transmission type</label>
                             <select id="Transmission_type" name="Transmission_type" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
@@ -229,7 +242,7 @@
                                 
                             </select>
                         </div>
-
+    
                         
                        
                        
@@ -237,23 +250,132 @@
                         
                         
                        
-
+    
                        
                         <button type="submit" class="w-full p-2 bg-black hover:bg-gray-900 text-white font-bold rounded-md">Submit</button>
                     </form>
-
+    
                     {% if predicted_price %}
-    <div class="h-10 bg-green-200">
-        <p>Predicted Price: {{ predicted_price }}</p>
+    <div class="h-10 bg-green-200 text-center p-2">
+        <p class="text-lg font-bold">Predicted Price: {{ predicted_price }}</p>
     </div>
-{% endif %}
-
-
+    {% endif %}
+    
 
 
                 </div>
+
+
+
+
+
+
             </div>
+
+
+
+
+
+
+
+
+
+            <div class="w-full md:w-1/2 h-screen">
+
+                
+
+       <div class="p-10">
+
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-3">Get the Best Price of Your Car</h2>
+            <div class="border-t-4 border-gray-500 w-16"></div>
+        </div>
+
+
+        <form method="POST" action="{% url 'number_detection' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block mb-2 text-sm font-medium text-gray-900" for="file_input">Upload file</label>
+                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" name="file_input" type="file" required>
+            </div>
+        
+        
+        
+
+        {% if uploaded_file_url %}
+        <div class="h-64bg-gray-400 rounded-md">
+            <img id="uploadedImage" src={{uploaded_file_url}} class="h-full w-full object-cover rounded-md" alt="Uploaded Image">
+        </div>
+        
+        {% else %}
+        <div class="bg-gray-400 rounded-md">
+            <img id="uploadedImage" class="object-cover rounded-md" alt="Uploaded Image">
+        </div>
+        {% endif %}
+        
+        <button type="submit" class="w-full p-2 bg-black hover:bg-gray-900 text-white font-bold rounded-md mt-2 ">Get the Registration number</button>
+
+    </form>
+
+    {% if number %}
+    <div class="rounded-md bg-gray-200 mb-2 p-4">
+        <div class="font-semibold text-lg mb-2">Car Details</div>
+        <div class="text-gray-700">Register number:{{ number }}</div>
+        {% if car_details %}
+        <div class="text-gray-700">Car owner:{{ car_details.owner }}</div>
+        <div class="text-gray-700">Address: {{ car_details.address }}</div>
+        {% endif %}
+    </div>
+
+    {% endif %}
+
+   
+    {% if message %}
+    <div class="rounded-md bg-red-200 mb-2 p-4">
+        <div class="font-semibold text-lg mb-2">{{ message }}</div>
+    </div>
+    {% endif %}
+    
+
+
+    </div>
+
+
+
+    
+                
+       </div>
+
+
+
+            </div>
+
+        </div>
+
         </div>
     </div>
+
+
+
+
+
+
+
+    <script>
+        document.getElementById('file_input').addEventListener('change', function (event) {
+            const fileInput = event.target;
+            const uploadedImage = document.getElementById('uploadedImage');
+    
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+    
+                reader.onload = function (e) {
+                    uploadedImage.src = e.target.result;
+                };
+    
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        });
+    </script>
 </body>
 </html>
