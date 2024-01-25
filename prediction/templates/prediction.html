@@ -7,9 +7,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
     <style>
+        
+        
         body {
+            margin: 0;
+            padding: 0;
+            
+            background-image: url('./static/images/background.jpg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
             font-family: 'Open Sans', sans-serif;
+            
         }
+    
+            
+        
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -18,7 +31,7 @@
         <div class="flex space-x-5 mt-6 md:mt-0">
             <a href={% url "home" %} class="text-gray-800 hover:text-gray-500">home</a>
             <a href={% url "prediction" %} class="text-gray-800 hover:text-gray-500">Prediction machine</a>
-            <a href={% url "review" %} class="text-gray-800 hover:text-gray-500">Review Analysis</a>
+            <a href={% url "review" %} class="text-gray-800 hover:text-gray-500">Review</a>
             {% comment %} <a href="#" class="text-gray-800 hover:text-gray-500">Contact Us</a> {% endcomment %}
         </div>
     </div>
@@ -51,7 +64,7 @@
                         <div class="mb-4">
                             <label for="Company_name" class="block mb-2 text-gray-800">Company name</label>
                             
-                            <select id="Company_name" name="Company_name" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md">
+                            <select id="Company_name" name="Company_name" class="w-full p-2 bg-white text-gray-800 border border-gray-300 focus:border-blue-500 rounded-md" onchange="updateModels()">
                                 <option value="Toyota">Toyota</option>
                                 <option value="Suzuki">Suzuki</option>
                                 <option value="Honda">Honda</option>
@@ -252,12 +265,12 @@
                        
     
                        
-                        <button type="submit" class="w-full p-2 bg-black hover:bg-gray-900 text-white font-bold rounded-md">Submit</button>
+                        <button type="submit" class="w-full p-2 bg-black hover:bg-gray-900 text-white font-bold rounded-md">Get Price</button>
                     </form>
     
                     {% if predicted_price %}
     <div class="h-10 bg-green-200 text-center p-2">
-        <p class="text-lg font-bold">Predicted Price: {{ predicted_price }}</p>
+        <p class="text-lg font-bold">Best Price: {{ predicted_price }}</p>
     </div>
     {% endif %}
     
@@ -287,7 +300,7 @@
        <div class="p-10">
 
         <div class="mb-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-3">Get the Best Price of Your Car</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-3">Upload Image of the car</h2>
             <div class="border-t-4 border-gray-500 w-16"></div>
         </div>
 
@@ -313,7 +326,7 @@
         </div>
         {% endif %}
         
-        <button type="submit" class="w-full p-2 bg-black hover:bg-gray-900 text-white font-bold rounded-md mt-2 ">Get the Registration number</button>
+        <button type="submit" class="w-full p-2 bg-black hover:bg-gray-900 text-white font-bold rounded-md mt-2 ">Get Details</button>
 
     </form>
 
@@ -377,5 +390,33 @@
             }
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+function updateModels() {
+    var selectedCompany = $("#Company_name").val();
+
+    // Make an AJAX request to your Django view to get models for the selected company
+    $.ajax({
+        type: "GET",
+        url: "{% url 'get_model' %}",  // Replace 'get_models' with your actual Django view name
+        data: { company: selectedCompany },
+        success: function(data) {
+            // Update the "Model" dropdown with the retrieved data
+            var modelDropdown = $("#Model");
+            modelDropdown.empty();  // Clear existing options
+
+            // Add new options based on the received data
+            for (var i = 0; i < data.models.length; i++) {
+                modelDropdown.append("<option value='" + data.models[i] + "'>" + data.models[i] + "</option>");
+            }
+        },
+        error: function(error) {
+            console.log("Error fetching models:", error);
+        }
+    });
+}
+</script>
+
 </body>
 </html>

@@ -2,23 +2,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAWIS - Get the Best Price of Your Car</title>
+    <title>CARSOUL - Car Information</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            
+            background-image: url('./static/images/aesthetic-white-pictures-kxxrnsv017t1dzgk.webp);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
             font-family: 'Open Sans', sans-serif;
+            
         }
     </style>
 </head>
 <body class="bg-white text-gray-800">
-    <div class="flex flex-col md:flex-row md:justify-between p-6">
-        <h1 class="text-4xl font-bold text-gray-800">CAWIS</h1>
+    <div class="flex flex-col md:flex-row md:justify-between p-6">  
+        <h1 class="text-4xl font-bold text-gray-800">CARSOUL</h1>
         <div class="flex space-x-5 mt-6 md:mt-0">
             <a href={% url "home" %} class="text-gray-800 hover:text-gray-500">home</a>
             <a href={% url "prediction" %} class="text-gray-800 hover:text-gray-500">Prediction machine</a>
-            <a href={% url "review" %} class="text-gray-800 hover:text-gray-500">Review Analysis</a>
+            <a href={% url "review" %} class="text-gray-800 hover:text-gray-500">Review </a>
             
         </div>
     </div>
@@ -26,24 +34,24 @@
     <div class="container mx-auto flex flex items-center justify-center">
         
         <div class="bg-white p-8 rounded shadow-md w-96">
-            <h1 class="text-2xl font-bold mb-4">Sentiment Analysis</h1>
+            <h1 class="text-2xl font-bold mb-4">Add a review</h1>
     
             <!-- Input form -->
             <form method="POST" id="reviewForm" class="mb-4">
                 {% csrf_token %}
-                <label for="review" class="block text-sm font-medium text-gray-600 mb-2">Add Review:</label>
+                <label for="review" class="block text-sm font-medium text-gray-600 mb-2">The sentiment wil be analysed:</label>
                 <textarea id="review" name="review" rows="4"
                     class="w-full border p-2 rounded focus:outline-none focus:border-blue-500"></textarea>
                 <button type="submit"
                     class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
-                    Submit
+                    Go
                 </button>
             </form>
     
             <!-- Sentiment analysis result -->
             {% if sentiment %}
             <div id="sentimentResult" class="mt-4">
-                <h2 class="text-lg font-semibold mb-2 text-black">Sentiment Analysis Result:</h2>
+                <h2 class="text-lg font-semibold mb-2 text-black">Sentiment of the review:</h2>
                 <p id="sentimentText" class="text-gray-700">{{sentiment}}</p>
             </div>
             {% endif %}

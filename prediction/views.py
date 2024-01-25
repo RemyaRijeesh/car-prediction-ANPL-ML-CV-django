@@ -12,8 +12,8 @@ import cv2
 import tensorflow as tf
 from keras_preprocessing.image import load_img, img_to_array
 import pytesseract as pt
-from .models import ReviewAnalysis,CarDetails
-
+from .models import ReviewAnalysis,CarDetails,CarModel,CarCompany
+from django.http import JsonResponse
 import google.generativeai as genai
 
 import os
@@ -190,3 +190,12 @@ def sentimental_analysis(request):
         )
 
     return render(request, "review.html")
+
+
+def get_model(request):
+    selected_company = request.GET.get('company', None)
+
+    # Query your database to get models for the selected company
+    models = CarModel.objects.filter(car_company__name=selected_company).values_list('name', flat=True)
+    print(models,"ggggggggggggggg")
+    return JsonResponse({'models': list(models)})
